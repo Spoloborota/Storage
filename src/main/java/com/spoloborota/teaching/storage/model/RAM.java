@@ -78,4 +78,10 @@ public class RAM {
 			return false;
 		}
 	}
+	
+	public String list(String name){
+		MapStorage mapStorage = map.get(name);
+			
+		return mapStorage.hashMap.entrySet().toString();
+	}
 }
