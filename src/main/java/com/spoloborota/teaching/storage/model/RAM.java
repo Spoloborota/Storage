@@ -79,9 +79,9 @@ public class RAM {
 		}
 	}
 	
-	public String list(String name){
-		MapStorage mapStorage = map.get(name);
-			
-		return mapStorage.hashMap.entrySet().toString();
+	public String list(){
+		return currentStorage.hashMap.entrySet().toString();
 	}
+
+	
 }

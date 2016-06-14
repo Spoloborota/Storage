@@ -57,12 +57,8 @@ public class Processor {
 				break;
 				
 			case Commands.LIST:
-				if (commandWords.length > 1) {
-					result = List.process(ram, commandWords);					
-				} else {
-					result = "Error";
-				}
-				break;	
+				result = List.process(ram);	
+				break;
 				
 			case Commands.SHUTDOWN:
 				System.out.println("Good bye!");
