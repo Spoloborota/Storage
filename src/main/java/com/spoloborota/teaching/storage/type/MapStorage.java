@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class MapStorage {
 
-	public String name;
-	public HashMap<String, String> hashMap;
+	private String name;
+	private HashMap<String, String> hashMap;
 	
 	public MapStorage(String name) {
 		this.name = name;
@@ -15,5 +15,9 @@ public class MapStorage {
 	public boolean add(String[] keyValue) {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
+	}
+	
+	public String toString(){
+		return hashMap.toString();
 	}
 }

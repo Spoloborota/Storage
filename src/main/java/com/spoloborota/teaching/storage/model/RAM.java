@@ -80,7 +80,7 @@ public class RAM {
 	}
 	
 	public String list(){
-		return currentStorage.hashMap.entrySet().toString();
+		return "Storage contains: " + currentStorage.toString();
 	}
 
 	
