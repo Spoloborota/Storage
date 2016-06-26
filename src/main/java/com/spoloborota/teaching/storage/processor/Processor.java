@@ -5,6 +5,7 @@ import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Use;
 
 /**
@@ -58,11 +59,19 @@ public class Processor {
 			case Commands.SHUTDOWN:
 				System.out.println("Good bye!");
 				System.exit(0);
+				
+			case Commands.LIST:
+				result = List.process(ram);
+				break;
+				
 			}
-			return result;
+			
+		return result;
 		} else {
 			return "You do not entered any comand";
 		}
+	
+
 	}
 
 }

@@ -78,4 +78,11 @@ public class RAM {
 			return false;
 		}
 	}
+	/**
+	 * Show data for the current storage
+	 * @return string with data
+	 */
+	public String list() {
+		return "The contents of the current storage: " + currentStorage.getData().toString();
+	}
 }
