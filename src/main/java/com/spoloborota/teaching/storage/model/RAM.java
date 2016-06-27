@@ -16,6 +16,9 @@ public class RAM {
 	
 	public RAM() {
 		map = new HashMap<>();
+		
+		
+		
 	}
 	
 	/**
@@ -77,5 +80,8 @@ public class RAM {
 		} else {
 			return false;
 		}
+	}
+	public String list(){   //new method
+		return currentStorage.toString();
 	}
 }

@@ -7,9 +7,11 @@ public class MapStorage {
 	public String name;
 	public HashMap<String, String> hashMap;
 	
+	
 	public MapStorage(String name) {
 		this.name = name;
 		hashMap = new HashMap<>();
+		
 	}
 	
 	public boolean add(String[] keyValue) {
@@ -17,3 +19,4 @@ public class MapStorage {
 		return true;
 	}
 }
+
