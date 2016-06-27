@@ -1,6 +1,9 @@
 package com.spoloborota.teaching.storage.main;
 
-import com.spoloborota.teaching.storage.model.RAM;
+import java.io.IOException;
+
+
+import com.spoloborota.teaching.storage.model.ROM;
 import com.spoloborota.teaching.storage.processor.Processor;
 import com.spoloborota.teaching.storage.view.Console;;
 
@@ -11,9 +14,10 @@ import com.spoloborota.teaching.storage.view.Console;;
  */
 public class Main {
 
-	public static void main(String[] args) {
-		RAM ram = new RAM();
-		Processor processor = new Processor(ram);
+	public static void main(String[] args) throws IOException {
+		
+		ROM rom = new ROM(args);
+		Processor processor = new Processor(rom.getRAM(), rom);
 		Console console = new Console(processor);
 		console.startListen();
 	}

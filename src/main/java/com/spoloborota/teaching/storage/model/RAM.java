@@ -1,10 +1,13 @@
 package com.spoloborota.teaching.storage.model;
 
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.spoloborota.teaching.storage.type.MapStorage;
 
+import com.spoloborota.teaching.storage.type.MapStorage;
+import com.spoloborota.teaching.storage.model.ROM;
 /**
  * All data saved to RAM memory first
  * @author Spoloborota
@@ -13,9 +16,15 @@ import com.spoloborota.teaching.storage.type.MapStorage;
 public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
+	public String dir;
 	
 	public RAM() {
+		
 		map = new HashMap<>();
+	}
+	
+	public RAM(Map<String, MapStorage> map) {
+		this.map = map;
 	}
 	
 	/**
@@ -81,6 +90,12 @@ public class RAM {
 	
 	public String list(){
 		return "Storage contains: " + currentStorage.toString();
+	}
+	
+	public String save(ROM rom) throws IOException{
+		rom.addToStorageDirCurrentStorage(currentStorage);
+		return "Storage saved";
+		
 	}
 
 	
