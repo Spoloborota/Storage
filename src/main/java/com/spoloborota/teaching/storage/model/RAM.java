@@ -16,11 +16,7 @@ public class RAM {
 	
 	public RAM() {
 		map = new HashMap<>();
-		
-		
-		
 	}
-	
 	/**
 	 * Show all storages
 	 * @return string with all storage names
