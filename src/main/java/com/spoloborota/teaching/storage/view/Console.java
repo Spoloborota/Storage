@@ -19,7 +19,7 @@ public class Console {
 		this.processor = processor;
 	}
 	
-	public void startListen() {
+	public void startListen() throws IOException{
 		while(true) {
 			try {
 				String commandString = rdr.readLine();
