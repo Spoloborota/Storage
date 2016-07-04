@@ -89,7 +89,12 @@ public class RAM {
 	}
 	
 	public String list(){
-		return "Storage contains: " + currentStorage.toString();
+		if (currentStorage != null) {
+			return "Storage contains: " + currentStorage.toString();
+		}
+		else {
+			return "Storage is not selected";
+		}
 	}
 	
 	public String save(ROM rom) throws IOException{
