@@ -17,7 +17,6 @@ public class RAM {
 	public RAM() {
 		map = new HashMap<>();
 	}
-	
 	/**
 	 * Show all storages
 	 * @return string with all storage names
@@ -77,5 +76,8 @@ public class RAM {
 		} else {
 			return false;
 		}
+	}
+	public String list(){   //new method
+		return currentStorage.toString();
 	}
 }
