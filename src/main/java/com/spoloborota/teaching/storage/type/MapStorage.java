@@ -4,9 +4,25 @@ import java.util.HashMap;
 
 public class MapStorage {
 
-	public String name;
-	public HashMap<String, String> hashMap;
-	
+	private String name;
+	private HashMap<String, String> hashMap;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public HashMap<String, String> getHashMap() {
+		return hashMap;
+	}
+
+	public void setHashMap(HashMap<String, String> hashMap) {
+		this.hashMap = hashMap;
+	}
+
 	public MapStorage(String name) {
 		this.name = name;
 		hashMap = new HashMap<>();

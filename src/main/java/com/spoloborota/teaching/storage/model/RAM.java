@@ -11,8 +11,8 @@ import com.spoloborota.teaching.storage.type.MapStorage;
  *
  */
 public class RAM {
-	public Map<String, MapStorage> map;
-	public MapStorage currentStorage = null;
+	private Map<String, MapStorage> map;
+	private MapStorage currentStorage = null;
 	
 	public RAM() {
 		map = new HashMap<>();
@@ -56,7 +56,7 @@ public class RAM {
 	 * @return string from current storage
 	 */
 	public String list() {
-		return currentStorage.hashMap.entrySet().toString();
+		return currentStorage.getHashMap().entrySet().toString();
 	}
 	
 	/**
