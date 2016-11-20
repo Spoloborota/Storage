@@ -50,6 +50,14 @@ public class RAM {
 			currentStorage = null;
 		}
 	}
+
+	/**
+	 * List current storage
+	 * @return string from current storage
+	 */
+	public String list() {
+		return currentStorage.hashMap.entrySet().toString();
+	}
 	
 	/**
 	 * Select existing storage by name to operate with it

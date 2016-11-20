@@ -11,7 +11,7 @@ public class MapStorage {
 		this.name = name;
 		hashMap = new HashMap<>();
 	}
-	
+
 	public boolean add(String[] keyValue) {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
