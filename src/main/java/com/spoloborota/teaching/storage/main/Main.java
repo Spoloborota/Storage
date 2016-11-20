@@ -22,5 +22,4 @@ public class Main {
         System.out.println("At your service, master.");
         console.startListen();
 	}
-
 }
