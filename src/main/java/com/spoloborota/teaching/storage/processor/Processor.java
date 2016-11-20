@@ -54,6 +54,15 @@ public class Processor {
 					result = "Data for storage does not specified correctly";
 				}
 				break;
+
+			case Commands.LIST:
+				if (commandWords.length > 2) {
+				result = Add.process(ram, commandWords);
+				} else {
+				result = "Oh my God";
+				}
+				break;
+
 				
 			case Commands.SHUTDOWN:
 				System.out.println("Good bye!");
