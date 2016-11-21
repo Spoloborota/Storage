@@ -56,7 +56,7 @@ public class RAM {
 	 * @return string from current storage
 	 */
 	public String list() {
-		return currentStorage.getHashMap().entrySet().toString();
+		return currentStorage.list();
 	}
 	
 	/**
