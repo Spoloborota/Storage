@@ -1,0 +1,46 @@
+Compilyatsiya:
+=============================
+C:\>javac -sourcepath C:\14\Storage\src\main\java -d C:\14\Storage\target\classe
+s C:\14\Storage\src\main\java\com\spoloborota\teaching\storage\main\Main.java
+
+
+Zapusk cherez classpath:
+=============================
+C:\>java -cp C:\14\Storage\target\classes; com.spoloborota.teaching.storage.main.Main
+
+
+Sozdaem jar-file:
+====================================================
+
+1.
+Run cdm.exe.
+
+2.
+-------"Zahodim" tuda gde lejat klassi----
+C:> cd C:\14\Storage\target\classes
+
+3.
+-------Sozdaem file MANIFEST.MF---
+copy con MANIFEST.MF
+
+4.
+---Pishem vnutri nego sleduyushee----
+Main-Class:  pyt' package + class name (vse cherez tochki)
+
+---Example:--------------------
+Main-Class: com.spoloborota.teaching.storage.main.Main
+
+5.
+Press ENTER!!!!!!!(doljno bit' dve stroki: 1.path to class 2. pustaya posle path to class)
+Press F6(for save file and exit).
+Type command cls.
+
+6.
+-------Sozdayem jar file--------
+C:\14\Storage\target\classes>jar cfm "name and path to desired jar file" MANIFEST.MF ./
+---Example:--------------------
+C:\14\Storage\target\classes>jar cfm d:\1.jar MANIFEST.MF ./
+
+7.Run jar file with java:
+
+D:\>java -jar C:\1.jar

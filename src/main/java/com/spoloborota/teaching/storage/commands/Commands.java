@@ -3,6 +3,7 @@ package com.spoloborota.teaching.storage.commands;
 public interface Commands {
 	public final static String DISPLAY = "display";
 	public final static String CREATE = "create";
+	public final static String DELETE = "delete";
 	public final static String USE = "use";
 	public final static String SHUTDOWN = "shutdown";
 	
@@ -12,6 +13,7 @@ public interface Commands {
 	public final static String QUEUE = "queue";
 	
 	public final static String ADD = "add";
+	public final static String REMOVE = "remove";
 	public final static String SELECT_ALL = "select all";
 	
 }
