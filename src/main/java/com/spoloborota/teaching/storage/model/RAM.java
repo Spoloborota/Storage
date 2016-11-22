@@ -1,7 +1,9 @@
 package com.spoloborota.teaching.storage.model;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.spoloborota.teaching.storage.type.MapStorage;
 
@@ -77,5 +79,17 @@ public class RAM {
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * print data to storage
+	 * ?
+	 * @return
+	 */
+	public HashMap<String, String> list(){
+		if (currentStorage != null)	
+			return currentStorage.hashMap;
+		else
+			return null;
 	}
 }
