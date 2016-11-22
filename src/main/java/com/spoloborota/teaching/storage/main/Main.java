@@ -14,8 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		RAM ram = new RAM();
 		Processor processor = new Processor(ram);
-		Console console = new Console(processor);
+		Console console = new Console(processor);		
 		console.startListen();
 	}
-
 }

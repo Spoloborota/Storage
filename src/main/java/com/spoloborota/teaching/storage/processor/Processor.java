@@ -3,8 +3,11 @@ package com.spoloborota.teaching.storage.processor;
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
+import com.spoloborota.teaching.storage.processor.type.Delete;
+import com.spoloborota.teaching.storage.processor.type.Remove;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Use;
 
 /**
@@ -47,6 +50,14 @@ public class Processor {
 				}
 				break;
 				
+			case Commands.DELETE:
+				if (commandWords.length > 1) {
+					result = Delete.process(ram, commandWords);
+				} else {
+					result = "Storage name does not specified";
+				}
+				break;
+				
 			case Commands.ADD:
 				if (commandWords.length > 2) {
 					result = Add.process(ram, commandWords);					
@@ -54,7 +65,29 @@ public class Processor {
 					result = "Data for storage does not specified correctly";
 				}
 				break;
+			
+			case Commands.REMOVE:
+				if (commandWords.length > 1) {
+					if (ram.currentStorage != null){
+						result = Remove.process(ram, commandWords);
+					}
+					else{
+						result = "There is no selected storage";
+					}
+				} else {
+					result = "Data for remove does not specified correctly";
+				}
+				break;
 				
+			case Commands.LIST:
+				if (ram.currentStorage != null){
+					result = List.process(ram, commandWords) + "\n" + "Data listed" + "\n";					
+				}
+				else{
+					result = "There is no selected storage";
+			}
+				break;
+							
 			case Commands.SHUTDOWN:
 				System.out.println("Good bye!");
 				System.exit(0);
