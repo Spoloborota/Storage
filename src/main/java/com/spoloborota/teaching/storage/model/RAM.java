@@ -14,11 +14,11 @@ import com.spoloborota.teaching.storage.type.MapStorage;
 public class RAM {
     public Map<String, MapStorage> map;
     public MapStorage currentStorage = null;
-    public File file;
+    public String path;
 
     public RAM(String fileDirectory) {
         map = new HashMap<>();
-        this.file = new File(fileDirectory);
+        path = fileDirectory;
     }
 
     /**
@@ -80,8 +80,8 @@ public class RAM {
      */
     public boolean save() {
 
-        if (file != null) {
-            return currentStorage.save(file);
+        if (path != null) {
+            return currentStorage.save(path);
         } else {
             return false;
         }

@@ -19,10 +19,10 @@ public class MapStorage {
         return true;
     }
 
-    public boolean save(File file) {
+    public boolean save(String path) {
         //Определяем файл
         try {
-            File fileToSave = new File(file.getAbsoluteFile() + this.name + ".storage");
+            File fileToSave = new File(path, this.name + ".storage");
 
             //проверяем, что если файл не существует то создаем его
             if (!fileToSave.exists()) {
@@ -35,8 +35,8 @@ public class MapStorage {
             try {
                 //Записываем текст в файл
                 for (Map.Entry<String, String> pair : hashMap.entrySet()) {
-                    out.print(pair.getKey());
-                    out.print(pair.getValue());
+                    out.println(pair.getKey());
+                    out.println(pair.getValue());
                 }
                 return true;
             } finally {

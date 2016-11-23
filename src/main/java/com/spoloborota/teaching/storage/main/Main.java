@@ -12,7 +12,6 @@ import com.spoloborota.teaching.storage.view.Console;;import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        final File file = new File(args[0]);
         RAM ram = new RAM(args[0]);
         Processor processor = new Processor(ram);
         Console console = new Console(processor);
