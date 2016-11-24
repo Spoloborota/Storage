@@ -44,7 +44,7 @@ public class Processor {
 			case Commands.LIST:
 				if (commandWords.length > 1){
 					result = List.process(ram, commandWords);
-					MapStorage.getMap = null;
+					
 				}else {
 					result = "Storage name does not specified";
 				}

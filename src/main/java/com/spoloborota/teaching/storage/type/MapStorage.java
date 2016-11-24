@@ -3,8 +3,12 @@ package com.spoloborota.teaching.storage.type;
 import java.util.HashMap;
 
 public class MapStorage {   //
-	public static String getMap;
+	private static String getMap;
 	
+
+	public static String getGetMap() {
+		return getMap;
+	}
 
 	public String name;  						// поле имени 
 	public HashMap<String, String> hashMap;		// создание hashmap <строка , строка>
