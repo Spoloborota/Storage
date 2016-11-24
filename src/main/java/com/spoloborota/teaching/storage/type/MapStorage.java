@@ -1,6 +1,7 @@
 package com.spoloborota.teaching.storage.type;
 
 import java.util.HashMap;
+import java.util.Map.Entry;;
 
 public class MapStorage {
 
@@ -14,6 +15,18 @@ public class MapStorage {
 	
 	public boolean add(String[] keyValue) {
 		hashMap.put(keyValue[0], keyValue[1]);
+		return true;
+	}
+	
+	public boolean list(String data) {
+		
+		for (Entry <String, String> entry: hashMap.entrySet()) { 
+			String key = entry.getKey(); 
+			String value = entry.getValue(); 
+			System.out.println(key + " " + value);
+			} 
+		
+		
 		return true;
 	}
 }

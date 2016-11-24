@@ -73,7 +73,15 @@ public class RAM {
 	 */
 	public boolean add(String[] data) {
 		if (currentStorage != null) {
-			return currentStorage.add(data);
+            return currentStorage.add(data);
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean list(String data) {
+		if (currentStorage != null) {
+			return currentStorage.list(data);
 		} else {
 			return false;
 		}
