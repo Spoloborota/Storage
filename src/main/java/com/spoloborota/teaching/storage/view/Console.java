@@ -1,6 +1,7 @@
 package com.spoloborota.teaching.storage.view;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 
 import com.spoloborota.teaching.storage.processor.Processor;
@@ -20,10 +21,13 @@ public class Console {
 	}
 	
 	public void startListen() {
+		String commandString = null;
+		String result = null;
+		
 		while(true) {
 			try {
-				String commandString = rdr.readLine();
-				String result = processor.process(commandString);
+				commandString = rdr.readLine();
+				result = processor.process(commandString);
 				System.out.println(result);
 			} catch (IOException e) {
 				e.printStackTrace();
