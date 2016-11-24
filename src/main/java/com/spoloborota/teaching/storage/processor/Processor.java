@@ -5,7 +5,9 @@ import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Use;
+import com.spoloborota.teaching.storage.type.MapStorage;
 
 /**
  * process commands
@@ -18,23 +20,32 @@ public class Processor {
 	public Processor(RAM ram) {
 		this.ram = ram;
 	}
-	public String process(String commandString) {
-		String[] commandWords = commandString.trim().split("\\s+");
+	public String process(String commandString) {        // метод принимает  команды
+		String[] commandWords = commandString.trim().split("\\s+"); // commandString делаем массив строк
 		if (commandWords.length != 0) {
-			for (String s : commandWords) {
+			for (String s : commandWords) {   // печатаем весь массив если он имеет != 0
 				System.out.println(s);
 			}
 			
-			String result = "";
-			switch (commandWords[0]) {
-			case Commands.DISPLAY:
-				result = Display.process(ram);
+			String result = "";              // создаем пустую строку результат 
+			switch (commandWords[0]) {		// т.к. первое слово[0] команда, по ней и и проверяем совпадения
+			case Commands.DISPLAY:			// если display из класса Commands 
+				result = Display.process(ram); // то вызываем метод process класса Display, передавая туда ram 
 				break;
 		
 			case Commands.USE:
-				if (commandWords.length > 1) {
-					result = Use.process(ram, commandWords);
+				if (commandWords.length > 1) {  // если сюда попали, значит команду use отлавили и проверяем есть ли ещё что после
+					result = Use.process(ram, commandWords); // если есть то вызывем process класса Use передавая ссылку ram и массив введеных слов 
 				} else {
+					result = "Storage name does not specified"; // это если написали только use
+				}
+				break;
+				
+			case Commands.LIST:
+				if (commandWords.length > 1){
+					result = List.process(ram, commandWords);
+					MapStorage.getMap = null;
+				}else {
 					result = "Storage name does not specified";
 				}
 				break;
@@ -48,7 +59,7 @@ public class Processor {
 				break;
 				
 			case Commands.ADD:
-				if (commandWords.length > 2) {
+				if (commandWords.length > 2) {                  // здесь нужно задать ключ значение которые засунем
 					result = Add.process(ram, commandWords);					
 				} else {
 					result = "Data for storage does not specified correctly";
@@ -57,7 +68,7 @@ public class Processor {
 				
 			case Commands.SHUTDOWN:
 				System.out.println("Good bye!");
-				System.exit(0);
+				System.exit(0);						// для выхода из RunTime 
 			}
 			return result;
 		} else {
