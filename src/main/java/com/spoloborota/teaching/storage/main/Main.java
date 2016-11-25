@@ -2,7 +2,7 @@ package com.spoloborota.teaching.storage.main;
 
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.Processor;
-import com.spoloborota.teaching.storage.view.Console;;import java.io.File;
+import com.spoloborota.teaching.storage.view.Console;import java.io.File;
 
 /**
  * Main class
@@ -12,9 +12,14 @@ import com.spoloborota.teaching.storage.view.Console;;import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        RAM ram = new RAM(args[0]);
+        File file = new File(args[0]);
+        if (file.isDirectory()){
+        RAM ram = new RAM(file);
         Processor processor = new Processor(ram);
         Console console = new Console(processor);
-        console.startListen();
+        console.startListen();}
+        else {
+            System.out.println("Illegal argument.");
+        }
     }
 }

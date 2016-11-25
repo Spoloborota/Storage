@@ -18,16 +18,15 @@ import com.spoloborota.teaching.storage.type.MapStorage;
 public class RAM {
     public Map<String, MapStorage> map;
     public MapStorage currentStorage = null;
-    public String path;
-
-    public RAM(String fileDirectory) {
+    private String path;
+    public RAM(File file) {
+        path = file.getPath();
         map = new HashMap<>();
-        path = fileDirectory;
         //считываем все файлы в директории
-        File folder = new File(path);
-        File[] folderEntries = folder.listFiles();
+        File[] folderEntries = file.listFiles();
 
             //проверяем расширение файла
+        if (folderEntries != null) {
             for (File entry : folderEntries) {
             if (entry.getName().split("\\.")[1].equals("storage")){
                // если совпало, вытаскиваем имя файла
@@ -50,7 +49,8 @@ public class RAM {
             }
 
             }
-
+        }
+        currentStorage=null;
 
 
 
@@ -115,11 +115,7 @@ public class RAM {
      */
     public boolean save() {
 
-        if (path != null&& currentStorage != null) {
-            return currentStorage.save(path);
-        } else {
-            return false;
-        }
+        return path != null && currentStorage != null && currentStorage.save(path);
 
     }
 
@@ -130,11 +126,7 @@ public class RAM {
      * @return - "true" if all is Ok and "false" if there is no selected storage
      */
     public boolean add(String[] data) {
-        if (currentStorage != null) {
-            return currentStorage.add(data);
-        } else {
-            return false;
-        }
+        return currentStorage != null && currentStorage.add(data);
     }
 
     private static class Files {
