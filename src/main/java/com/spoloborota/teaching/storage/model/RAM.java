@@ -12,8 +12,12 @@ import com.spoloborota.teaching.storage.type.MapStorage;
  */
 public class RAM {
 	public Map<String, MapStorage> map;			// создается map 
-	public MapStorage currentStorage = null;	// ссылка currentStorage объекта MapStoraga = null. Текущее хранилище
+	private static MapStorage currentStorage = null;	// ссылка currentStorage объекта MapStoraga = null. Текущее хранилище
 	
+	public static MapStorage getCurrentStorage() {
+		return currentStorage;
+	}
+
 	public RAM() {								// конструктор RAM, инициализация map hashmap'ом  
 		map = new HashMap<>();
 	}
@@ -80,6 +84,17 @@ public class RAM {
 			return false;
 		}
 	}
+	
+	public boolean save(String name){
+		MapStorage mapStorage = map.get(name);
+		if (currentStorage == mapStorage & currentStorage != null){
+			return currentStorage.save(name);
+		}else {
+			return false;
+		}
+	}
+	
+	
 	
 	/**
 	 * Add data to storage
