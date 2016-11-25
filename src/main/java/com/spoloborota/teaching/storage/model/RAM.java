@@ -86,9 +86,9 @@ public class RAM {
 	 * ?
 	 * @return
 	 */
-	public HashMap<String, String> list(){
+	public String listDisplay(){
 		if (currentStorage != null)	
-			return currentStorage.hashMap;
+			return currentStorage.hashMap.toString();
 		else
 			return null;
 	}
