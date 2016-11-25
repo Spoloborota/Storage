@@ -8,7 +8,7 @@ public class Save {
     public static String process(RAM ram) {
         boolean isSaved = ram.save();
         if (isSaved) {
-            return "File Saved";
+            return ram.currentStorage.name + " saved";
         } else {
             return "Could not save file";
         }

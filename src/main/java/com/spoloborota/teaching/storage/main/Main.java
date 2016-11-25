@@ -17,5 +17,4 @@ public class Main {
         Console console = new Console(processor);
         console.startListen();
     }
-
 }

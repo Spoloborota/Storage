@@ -54,8 +54,7 @@ public class Processor {
                     break;
 
                 case Commands.SHUTDOWN:
-                    System.out.println("Good bye!");
-                    System.exit(0);
+                    Shutdown.process(ram);
 
                 case Commands.SAVE:
                     result = Save.process(ram);

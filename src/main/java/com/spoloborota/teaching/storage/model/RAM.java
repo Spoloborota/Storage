@@ -1,7 +1,11 @@
 package com.spoloborota.teaching.storage.model;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.spoloborota.teaching.storage.type.MapStorage;
@@ -19,6 +23,37 @@ public class RAM {
     public RAM(String fileDirectory) {
         map = new HashMap<>();
         path = fileDirectory;
+        //считываем все файлы в директории
+        File folder = new File(path);
+        File[] folderEntries = folder.listFiles();
+
+            //проверяем расширение файла
+            for (File entry : folderEntries) {
+            if (entry.getName().split("\\.")[1].equals("storage")){
+               // если совпало, вытаскиваем имя файла
+            String storageName = entry.getName().split("\\.")[0];
+                create(storageName);
+                System.out.println(storageName + " is loaded");
+                // считать из файла данные и закинуть их в мапу.
+                List<String> lines = null;
+                try {
+                    lines = java.nio.file.Files.readAllLines(entry.toPath(), StandardCharsets.UTF_8);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                use(storageName);
+                for(int i=0; i<lines.size()-1;i++){
+                    String[] pair = {lines.get(i), lines.get(i+1)};
+                 currentStorage.add(pair);
+                    System.out.println("settings added to " + storageName);
+                }
+            }
+
+            }
+
+
+
+
     }
 
     /**
@@ -80,7 +115,7 @@ public class RAM {
      */
     public boolean save() {
 
-        if (path != null) {
+        if (path != null&& currentStorage != null) {
             return currentStorage.save(path);
         } else {
             return false;
@@ -100,5 +135,8 @@ public class RAM {
         } else {
             return false;
         }
+    }
+
+    private static class Files {
     }
 }

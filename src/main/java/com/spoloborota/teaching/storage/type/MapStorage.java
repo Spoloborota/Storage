@@ -27,6 +27,9 @@ public class MapStorage {
             //проверяем, что если файл не существует то создаем его
             if (!fileToSave.exists()) {
                 fileToSave.createNewFile();
+            } else {
+                System.out.println("old file deleted "+ fileToSave.delete());
+                fileToSave.createNewFile();
             }
 
             //PrintWriter обеспечит возможности записи в файл
