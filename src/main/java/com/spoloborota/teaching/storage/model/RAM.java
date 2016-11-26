@@ -79,9 +79,9 @@ public class RAM {
 		}
 	}
 	
-	public boolean list(String data) {
+	public boolean list() {
 		if (currentStorage != null) {
-			return currentStorage.list(data);
+			return currentStorage.list();
 		} else {
 			return false;
 		}
