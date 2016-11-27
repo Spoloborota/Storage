@@ -1,10 +1,12 @@
 package com.spoloborota.teaching.storage.processor;
 
+
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Use;
 
 /**
@@ -47,6 +49,14 @@ public class Processor {
 				}
 				break;
 				
+			case Commands.LIST:
+				if (commandWords.length == 1) {
+					result = List.process(ram);
+				} else {
+					result = "Storage name does not specified";
+				}
+				break;
+				
 			case Commands.ADD:
 				if (commandWords.length > 2) {
 					result = Add.process(ram, commandWords);					
@@ -63,6 +73,8 @@ public class Processor {
 		} else {
 			return "You do not entered any comand";
 		}
+		
 	}
-
 }
+
+

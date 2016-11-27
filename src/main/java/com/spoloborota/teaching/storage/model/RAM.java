@@ -1,5 +1,6 @@
 package com.spoloborota.teaching.storage.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,4 +79,15 @@ public class RAM {
 			return false;
 		}
 	}
+	
+	/**
+	 * get data from storage
+	 * 
+	 * @return data of currentStorage
+	 * 
+	 */
+	public ArrayList<String> list() {
+		return currentStorage.print();
+		
+}
 }
