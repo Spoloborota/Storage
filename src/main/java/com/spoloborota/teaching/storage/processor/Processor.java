@@ -47,6 +47,14 @@ public class Processor {
 				}
 				break;
 				
+			case Commands.LIST:
+				if (commandWords.length == 1) {
+					result = List.process(ram);
+				} else {
+					result = "Storage name does not specified";
+				}
+				break;
+				
 			case Commands.ADD:
 				if (commandWords.length > 2) {
 					result = Add.process(ram, commandWords);					
