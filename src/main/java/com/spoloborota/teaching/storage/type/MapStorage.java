@@ -25,7 +25,7 @@ public class MapStorage {
 		for (Map.Entry<String, String> pair : hashMap.entrySet()){
 		 String key = pair.getKey();
 		 String value = pair.getValue();
-		 a = key + " " + value;
+		 a = key + " : " + value;
 		 arr.add(0, a);
 		}
 		return arr;
