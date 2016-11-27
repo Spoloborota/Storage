@@ -12,7 +12,13 @@ import com.spoloborota.teaching.storage.view.Console;;
 public class Main {
 
 	public static void main(String[] args) {
-		RAM ram = new RAM();
+		String source;
+		if (args.length == 0) {
+			source = "src/main/java/com/spoloborota/teaching/storage/storage_files";
+		} else {
+			source = args[0];
+		}
+		RAM ram = new RAM(source);
 		Processor processor = new Processor(ram);
 		Console console = new Console(processor);
 		console.startListen();

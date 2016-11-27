@@ -1,5 +1,7 @@
 package com.spoloborota.teaching.storage.model;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,10 +15,15 @@ import com.spoloborota.teaching.storage.type.MapStorage;
 public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
+	public String source;
 	
-	public RAM() {
+	public RAM(String source) {
 		map = new HashMap<>();
+		this.source = source;
+		
 	}
+	
+	File st_f = new File(source, "xxx.storage");	
 	
 	/**
 	 * Show all storages
@@ -85,5 +92,23 @@ public class RAM {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean save() {
+		if (currentStorage != null) {
+						
+			try {
+				return currentStorage.save(source);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			return false;
+		}
+		return false;
 	}
 }
