@@ -13,11 +13,11 @@ import com.spoloborota.teaching.storage.type.MapStorage;
 public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
-	
+
 	public RAM() {
 		map = new HashMap<>();
 	}
-	
+
 	/**
 	 * Show all storages
 	 * @return string with all storage names
@@ -25,7 +25,7 @@ public class RAM {
 	public String display() {
 		return map.keySet().toString();
 	}
-	
+
 	/**
 	 * Create new storage
 	 * @param name - name of the creating storage
@@ -39,7 +39,7 @@ public class RAM {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Delete existing storage by name
 	 * @param name
@@ -50,7 +50,7 @@ public class RAM {
 			currentStorage = null;
 		}
 	}
-	
+
 	/**
 	 * Select existing storage by name to operate with it
 	 * @param name
@@ -65,7 +65,7 @@ public class RAM {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Add data to storage
 	 * @param data
@@ -77,5 +77,9 @@ public class RAM {
 		} else {
 			return false;
 		}
+	}
+	public ArrayList<String> list() {
+		return currentStorage.print();
+
 	}
 }
