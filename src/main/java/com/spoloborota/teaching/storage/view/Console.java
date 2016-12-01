@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 
+import com.spoloborota.teaching.storage.file_load.FileLoad;
 import com.spoloborota.teaching.storage.file_save.FileSave;
 import com.spoloborota.teaching.storage.processor.Processor;
 import com.spoloborota.teaching.storage.reader.SingletonReader;
@@ -34,8 +35,11 @@ public class Console {
 				while (FileSave.getCATALOG_EXIST_NO_EXIST() == 0) {
 					String commandString1 = rdr.readLine();
 					FileSave.catalog(commandString1);
+					if (FileSave.getCATALOG_EXIST_NO_EXIST() == 1) {
+						FileLoad.load(commandString1);
+					}
 				}
-				
+
 				String commandString = rdr.readLine();
 				String result = processor.process(commandString);
 				System.out.println(result);

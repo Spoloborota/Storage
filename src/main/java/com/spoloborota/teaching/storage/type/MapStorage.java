@@ -7,27 +7,24 @@ import java.util.HashMap;
 
 import com.spoloborota.teaching.storage.file_save.FileSave;
 
-public class MapStorage { //
+public class MapStorage {
 	private static String getMap;
 
 	public static String getGetMap() {
 		return getMap;
 	}
 
-	public String name; // поле имени
-	public HashMap<String, String> hashMap; // создание hashmap <строка ,
-	// строка>
+	public String name;
+	public HashMap<String, String> hashMap;
 
-	public MapStorage(String name) { // конструктор принимает имя и присваивает
-		// его полю класса, инициализация
-		// hashmap
+	public MapStorage(String name) {
 		this.name = name;
 		hashMap = new HashMap<>();
 	}
 
-	public boolean add(String[] keyValue) { // метод add принимает строки,должно быть 2 строки мин.
-		hashMap.put(keyValue[0], keyValue[1]); // в hashmap помещаются ключ первое слово, значение второе
-		return true; // вернули true
+	public boolean add(String[] keyValue) {
+		hashMap.put(keyValue[0], keyValue[1]);
+		return true;
 	}
 
 	public boolean get(String name) {
