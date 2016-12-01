@@ -6,6 +6,7 @@ import com.spoloborota.teaching.storage.view.Console;;
 
 /**
  * Main class
+ * 
  * @author Spoloborota
  *
  */

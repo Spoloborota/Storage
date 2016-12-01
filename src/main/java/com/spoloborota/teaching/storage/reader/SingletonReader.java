@@ -5,6 +5,10 @@ import java.io.InputStreamReader;
 
 public class SingletonReader extends BufferedReader{
 	
+	public static SingletonReader getRdr() {
+		return rdr;
+	}
+
 	private static SingletonReader rdr;
 	
 	private SingletonReader(InputStreamReader inputStreamReader) {
