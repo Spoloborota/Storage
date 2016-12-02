@@ -18,15 +18,5 @@ public class MapStorage {
 		return true;
 	}
 	
-	public boolean list() {
-		
-		for (Entry <String, String> entry: hashMap.entrySet()) { 
-			String key = entry.getKey(); 
-			String value = entry.getValue(); 
-			System.out.println(key + " " + value);
-			} 
-		
-		System.out.println("command list for storage: " + name);
-		return true;
-	}
+	
 }

@@ -79,11 +79,11 @@ public class RAM {
 		}
 	}
 	
-	public boolean list() {
+	public String list() {
 		if (currentStorage != null) {
-			return currentStorage.list();
+			return currentStorage.hashMap.entrySet().toString();
 		} else {
-			return false;
+			return "Please select the Storage";
 		}
 	}
 }
