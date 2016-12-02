@@ -73,9 +73,17 @@ public class RAM {
 	 */
 	public boolean add(String[] data) {
 		if (currentStorage != null) {
-			return currentStorage.add(data);
+            return currentStorage.add(data);
 		} else {
 			return false;
+		}
+	}
+	
+	public String list() {
+		if (currentStorage != null) {
+			return currentStorage.hashMap.entrySet().toString();
+		} else {
+			return "Please select the Storage";
 		}
 	}
 }

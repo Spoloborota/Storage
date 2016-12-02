@@ -5,6 +5,7 @@ import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Use;
 
 /**
@@ -52,6 +53,14 @@ public class Processor {
 					result = Add.process(ram, commandWords);					
 				} else {
 					result = "Data for storage does not specified correctly";
+				}
+				break;
+				
+			case Commands.LIST:
+				if (commandWords.length == 1) {
+					result = List.process(ram);
+				} else {
+					result = "Storage name does not specified";
 				}
 				break;
 				
