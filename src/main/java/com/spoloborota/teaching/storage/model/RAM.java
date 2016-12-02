@@ -1,10 +1,18 @@
 package com.spoloborota.teaching.storage.model;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import com.spoloborota.teaching.storage.type.LoadStorage;
 import com.spoloborota.teaching.storage.type.MapStorage;
 
 /**
@@ -16,15 +24,18 @@ public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
 	public String source;
+	public static File source_f;
+	public LoadStorage ld; 
 	
 	public RAM(String source) {
 		map = new HashMap<>();
 		this.source = source;
-		
+		source_f = new File(source);
+		ld = new LoadStorage(source_f);
 	}
 	
-	File st_f = new File(source, "xxx.storage");	
 	
+
 	/**
 	 * Show all storages
 	 * @return string with all storage names
@@ -86,28 +97,34 @@ public class RAM {
 		}
 	}
 	
-	public boolean list() {
+	public String list() {
 		if (currentStorage != null) {
-			return currentStorage.list();
+			return currentStorage.hashMap.entrySet().toString();
 		} else {
-			return false;
+			return "Please select the Storage";
 		}
 	}
 	
-	public boolean save() {
+	public boolean save() throws IOException {
 		if (currentStorage != null) {
-						
-			try {
-				return currentStorage.save(source);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			return false;
+			
+			File f = new File(source, currentStorage.name + ".storage");
+//	        FileOutputStream fileOutputStream = new FileOutputStream(f);
+//	        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//	        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(f));
+	        PrintWriter out = new PrintWriter(f);
+					
+			for (Entry <String, String> entry: currentStorage.hashMap.entrySet()) { 
+				String key = entry.getKey(); 
+				String value = entry.getValue(); 
+				out.println(key);
+				out.println(value);
+				
+				}
+			out.close();
+			
+			return true;			
+			
 		}
 		return false;
 	}

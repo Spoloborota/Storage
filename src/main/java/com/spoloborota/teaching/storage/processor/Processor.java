@@ -1,5 +1,7 @@
 package com.spoloborota.teaching.storage.processor;
 
+import java.io.IOException;
+
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
@@ -20,7 +22,7 @@ public class Processor {
 	public Processor(RAM ram) {
 		this.ram = ram;
 	}
-	public String process(String commandString) {
+	public String process(String commandString) throws IOException {
 		String[] commandWords = commandString.trim().split("\\s+");
 		if (commandWords.length != 0) {
 			for (String s : commandWords) {
