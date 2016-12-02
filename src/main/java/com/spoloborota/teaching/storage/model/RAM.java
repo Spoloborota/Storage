@@ -1,10 +1,14 @@
 package com.spoloborota.teaching.storage.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.spoloborota.teaching.storage.localModel.LocalDatabase;
 import com.spoloborota.teaching.storage.type.MapStorage;
 
 /**
@@ -84,12 +88,28 @@ public class RAM {
 	/**
 	 * print data to storage
 	 * ?
-	 * @return
+	 * @return - "list string" storage if currentStorage != null and "null" if currentStorage == null
 	 */
 	public String listDisplay(){
 		if (currentStorage != null)	
 			return currentStorage.hashMap.toString();
 		else
 			return null;
+	}
+	
+	/**
+	 * save storage in path File
+	 * @return - "true" if file save and "false" if occurred error
+	 */
+	public boolean saveStorage(){
+		if (currentStorage != null){
+			try {
+				LocalDatabase.unloadingDatabase(currentStorage);
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 }
