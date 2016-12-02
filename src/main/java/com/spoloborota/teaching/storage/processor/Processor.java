@@ -1,11 +1,18 @@
 package com.spoloborota.teaching.storage.processor;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.ListPrint;
+import com.spoloborota.teaching.storage.processor.type.Save;
 import com.spoloborota.teaching.storage.processor.type.Use;
+import com.spoloborota.teaching.storage.reader.SingletonReader;
 
 /**
  * process commands
@@ -55,7 +62,25 @@ public class Processor {
 				}
 				break;
 				
+			case Commands.LIST:
+					result = ListPrint.process(ram);
+				break;
+				
+			case Commands.SAVE:
+					result = Save.process(ram);
+				break;
+				
 			case Commands.SHUTDOWN:
+				SingletonReader readerLine = SingletonReader.getInstance();
+				System.out.println("Сохранить текущее хранилище?");
+				String ans = null; 
+				try {
+					ans = readerLine.readLine().trim();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				if (ans.equals("y"))
+					Save.process(ram);
 				System.out.println("Good bye!");
 				System.exit(0);
 			}
