@@ -24,8 +24,8 @@ public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
 	public String source;
-	public static File source_f;
-	public LoadStorage ld; 
+	public File source_f;
+	public LoadStorage ld;
 	
 	public RAM(String source) {
 		map = new HashMap<>();
@@ -33,6 +33,9 @@ public class RAM {
 		source_f = new File(source);
 		ld = new LoadStorage(source_f);
 	}
+	
+	
+	
 	
 	
 

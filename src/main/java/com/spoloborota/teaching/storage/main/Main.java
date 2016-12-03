@@ -18,6 +18,7 @@ public class Main {
 		} else {
 			source = args[0];
 		}
+
 		RAM ram = new RAM(source);
 		Processor processor = new Processor(ram);
 		Console console = new Console(processor);
