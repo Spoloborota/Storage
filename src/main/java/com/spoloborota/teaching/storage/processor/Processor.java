@@ -3,6 +3,13 @@ package com.spoloborota.teaching.storage.processor;
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.*;
+import com.spoloborota.teaching.storage.processor.type.Shutdown;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.List;
 
 /**
  * process commands
@@ -14,6 +21,43 @@ public class Processor {
 
     public Processor(RAM ram) {
         this.ram = ram;
+    }
+
+    private static boolean saveCurrentStorageQuestion = false;
+
+    public void setUp(File file) {
+        ram.path = file.getPath();
+        //считываем все файлы в директории
+        File[] folderEntries = file.listFiles();
+
+        //проверяем расширение файла
+        if (folderEntries != null) {
+            for (File entry : folderEntries) {
+                if (entry.getName().split("\\.")[1].equals("storage")) {
+                    // если совпало, вытаскиваем имя файла
+                    String storageName = entry.getName().split("\\.")[0];
+                    ram.create(storageName);
+                    process(storageName + "_is_loaded");
+                    // считать из файла данные и закинуть их в мапу.
+                    List<String> lines = null;
+                    try {
+                        lines = Files.readAllLines(entry.toPath(), StandardCharsets.UTF_8);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ram.use(storageName);
+                    if (lines != null) {
+                        for (int i = 0; i < lines.size() - 1; i++) {
+                            String[] pair = {lines.get(i), lines.get(i + 1)};
+                            ram.currentStorage.add(pair);
+                            process("settings_added_to_" + storageName);
+                        }
+                    }
+                }
+
+            }
+        }
+        ram.currentStorage = null;
     }
 
     public String process(String commandString) {
@@ -53,13 +97,34 @@ public class Processor {
                     }
                     break;
 
-                case Commands.SHUTDOWN:
-                    Shutdown.process(ram);
-
                 case Commands.SAVE:
                     result = Save.process(ram);
                     break;
 
+                case Commands.SHUTDOWN:
+                    if (ram.currentStorage != null) {
+                        //ставим флаг что был задан вопрос, ждем ответ "y" или "n"
+                        saveCurrentStorageQuestion = true;
+                        result = "Save_current_storage?(y/n)";
+                        break;
+                    } else {
+                        Shutdown.process();
+                    }
+
+                case Commands.YES: {
+                    if (saveCurrentStorageQuestion) {
+                        Save.process(ram);
+                        process("Storage_saved");
+                        Shutdown.process();
+                        break;
+                    }
+                }
+                case Commands.NO: {
+                    if (saveCurrentStorageQuestion) {
+                        Shutdown.process();
+                        break;
+                    }
+                }
             }
             return result;
         } else {

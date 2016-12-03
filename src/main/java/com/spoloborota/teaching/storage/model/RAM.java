@@ -1,14 +1,10 @@
 package com.spoloborota.teaching.storage.model;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.spoloborota.teaching.storage.type.MapStorage;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * All data saved to RAM memory first
@@ -16,43 +12,12 @@ import com.spoloborota.teaching.storage.type.MapStorage;
  * @author Spoloborota
  */
 public class RAM {
-    public Map<String, MapStorage> map;
+    private Map<String, MapStorage> map;
     public MapStorage currentStorage = null;
-    private String path;
-    public RAM(File file) {
-        path = file.getPath();
+    public String path;
+
+    public RAM() {
         map = new HashMap<>();
-        //считываем все файлы в директории
-        File[] folderEntries = file.listFiles();
-
-            //проверяем расширение файла
-        if (folderEntries != null) {
-            for (File entry : folderEntries) {
-            if (entry.getName().split("\\.")[1].equals("storage")){
-               // если совпало, вытаскиваем имя файла
-            String storageName = entry.getName().split("\\.")[0];
-                create(storageName);
-                System.out.println(storageName + " is loaded");
-                // считать из файла данные и закинуть их в мапу.
-                List<String> lines = null;
-                try {
-                    lines = java.nio.file.Files.readAllLines(entry.toPath(), StandardCharsets.UTF_8);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                use(storageName);
-                for(int i=0; i<lines.size()-1;i++){
-                    String[] pair = {lines.get(i), lines.get(i+1)};
-                 currentStorage.add(pair);
-                    System.out.println("settings added to " + storageName);
-                }
-            }
-
-            }
-        }
-        currentStorage=null;
-
-
 
     }
 
@@ -114,9 +79,7 @@ public class RAM {
      * @return - "true" if storage with such name exist and "false" otherwise
      */
     public boolean save() {
-
-        return path != null && currentStorage != null && currentStorage.save(path);
-
+        return currentStorage != null && currentStorage.save(path);
     }
 
     /**
@@ -129,6 +92,7 @@ public class RAM {
         return currentStorage != null && currentStorage.add(data);
     }
 
-    private static class Files {
+    public boolean checkFileIsDirectory(File file) {
+        return file.isDirectory();
     }
 }

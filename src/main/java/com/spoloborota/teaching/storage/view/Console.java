@@ -1,10 +1,9 @@
 package com.spoloborota.teaching.storage.view;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 import com.spoloborota.teaching.storage.processor.Processor;
 import com.spoloborota.teaching.storage.reader.SingletonReader;
+
+import java.io.IOException;
 
 /**
  * Commands received via system console

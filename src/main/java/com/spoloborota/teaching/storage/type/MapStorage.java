@@ -1,13 +1,15 @@
 package com.spoloborota.teaching.storage.type;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MapStorage {
 
     public String name;
-    public HashMap<String, String> hashMap;
+    private HashMap<String, String> hashMap;
 
     public MapStorage(String name) {
         this.name = name;
@@ -28,7 +30,6 @@ public class MapStorage {
             if (!fileToSave.exists()) {
                 fileToSave.createNewFile();
             } else {
-                System.out.println("old file deleted "+ fileToSave.delete());
                 fileToSave.createNewFile();
             }
 
