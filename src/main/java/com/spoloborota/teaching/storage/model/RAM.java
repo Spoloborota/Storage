@@ -24,14 +24,12 @@ public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
 	public String source;
-	public File source_f;
-	public LoadStorage ld;
 	
-	public RAM(String source) {
+	
+	
+	public RAM() {
 		map = new HashMap<>();
-		this.source = source;
-		source_f = new File(source);
-		ld = new LoadStorage(source_f);
+		LoadStorage ld;
 	}
 	
 	
@@ -112,9 +110,6 @@ public class RAM {
 		if (currentStorage != null) {
 			
 			File f = new File(source, currentStorage.name + ".storage");
-//	        FileOutputStream fileOutputStream = new FileOutputStream(f);
-//	        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-//	        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(f));
 	        PrintWriter out = new PrintWriter(f);
 					
 			for (Entry <String, String> entry: currentStorage.hashMap.entrySet()) { 
