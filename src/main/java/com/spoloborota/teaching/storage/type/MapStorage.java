@@ -30,4 +30,15 @@ public class MapStorage {
 		}
 		return arr;
 	}
+	public String save() {
+		String a = "";
+		ArrayList<String> arr = new ArrayList<String>();
+		for (Map.Entry<String, String> pair : hashMap.entrySet()){
+		 String key = pair.getKey();
+		 String value = pair.getValue();
+		 a = key + "\n" + value + "\n";
+		 arr.add(a);
+		}
+		return arr.toString();
+	}
 }
