@@ -78,4 +78,9 @@ public class RAM {
 			return false;
 		}
 	}
+	
+	public ArrayList<String> list() {
+		return currentStorage.print();
+
+	}
 }
