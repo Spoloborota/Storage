@@ -1,5 +1,7 @@
 package com.spoloborota.teaching.storage.processor;
 
+import java.util.Scanner;
+
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
@@ -65,8 +67,19 @@ public class Processor {
 				break;
 
 			case Commands.SHUTDOWN:
-				System.out.println("Good bye!");
-				System.exit(0);
+				System.out.println("Do you want to save the data in current storage? (Press key Y or N)");
+				Scanner inp = new Scanner(System.in);
+				String command = inp.nextLine().trim().toLowerCase();
+				switch (command) {
+				case "y":
+					Save.process(ram);
+					System.out.println("Data saved. Good bye!");
+					System.exit(0);
+
+				case "n":
+					System.out.println("Good bye!");
+					System.exit(0);
+				}
 			}
 			return result;
 		} else {
