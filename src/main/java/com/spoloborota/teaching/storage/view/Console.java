@@ -16,11 +16,11 @@ public class Console {
 	public static String url = "";
 	public Processor processor;
 	public SingletonReader rdr = SingletonReader.getInstance(); 
-	
+
 	public Console(Processor processor) {
 		this.processor = processor;
 	}
-	
+
 	public void startListen() {
 		while(true) {
 			try {
@@ -44,4 +44,11 @@ public class Console {
 			}
 		}
 	}
+
+	//возвращает адрес, переданный пользователем
+	public String get_url()
+	{
+		return url;
+	}
+
 }
