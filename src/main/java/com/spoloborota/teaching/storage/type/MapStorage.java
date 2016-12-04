@@ -1,5 +1,6 @@
 package com.spoloborota.teaching.storage.type;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MapStorage {
@@ -15,5 +16,10 @@ public class MapStorage {
 	public boolean add(String[] keyValue) {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
+	}
+
+	public ArrayList<String> save() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
