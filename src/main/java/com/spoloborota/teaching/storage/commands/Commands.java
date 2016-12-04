@@ -14,4 +14,5 @@ public interface Commands {
 	public final static String ADD = "add";
 	public final static String SELECT_ALL = "select all";
 	
+	public final static String SAVE = "save";
 }

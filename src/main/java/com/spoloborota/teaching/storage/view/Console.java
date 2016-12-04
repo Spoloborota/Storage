@@ -1,6 +1,5 @@
 package com.spoloborota.teaching.storage.view;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 
 import com.spoloborota.teaching.storage.processor.Processor;
@@ -20,6 +19,7 @@ public class Console {
 	}
 	
 	public void startListen() {
+			System.out.println("Первой командой укажите путь к существующей директории (Например C:\\java) ... хотя можете указать и несуществующую, всё равно мы заставим Вас сделать так, как это нужно нам, если только вы не будете чеерезчур настырны :)");
 		while(true) {
 			try {
 				String commandString = rdr.readLine();
