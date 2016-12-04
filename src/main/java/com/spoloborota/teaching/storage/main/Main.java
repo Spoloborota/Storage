@@ -15,6 +15,7 @@ public class Main {
 		RAM ram = new RAM();
 		Processor processor = new Processor(ram);
 		Console console = new Console(processor);
+		System.out.println("Select the directory to which you want to save the data. You can " + "do this later. Before \"SAVE\" command.");
 		console.startListen();
 	}
 
