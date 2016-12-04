@@ -18,11 +18,11 @@ import com.spoloborota.teaching.storage.view.*;
  */
 public class Processor {
 	public RAM ram;
-	public Console c;
+
 	
-	public Processor(RAM ram, Console c) {
+	public Processor(RAM ram) {
 		this.ram = ram;
-		this.c = c;
+		
 	}
 	public String process(String commandString) {
 		String[] commandWords = commandString.trim().split("\\s+");
@@ -62,9 +62,9 @@ public class Processor {
 				break;
 				
 			case Commands.SAVE:
-				if (commandWords.length > 1) {
+				if (commandWords.length == 1) {
 					result = Save.process(ram);
-//					System.out.println("Saving current storage...");
+					System.out.println("Storage saved");
 				} else {
 					result = "null";
 				}
