@@ -39,6 +39,20 @@ public class Console {
 					} else {
 						System.out.println("Directory does not exist. You must specify a directory.");
 					}
+					check(url);
+					for(int i = 0; i < check(url).length; i++){
+						String c = "create " + check(url)[i];
+						String result = processor.process(c);
+						System.out.println("File "+ check(url)[i] + ".storage exists " + "in directory: " + url);
+						String u = "use " + check(url)[i];
+						result = processor.process(u);
+						for(int j = 0; j < readfile(url+"\\"+check(url)[i]+".storage").size(); j++){
+							String ad = "add " + readfile(url+"\\"+check(url)[i]+".storage").get(j) + " " + readfile(url+"\\"+check(url)[i]+".storage").get(j+1);
+							j++;
+							result = processor.process(ad);
+						}
+						System.out.println("Data downloaded!");
+					}
 				} else { 
 					String result = processor.process(commandString);
 					System.out.println(result);
