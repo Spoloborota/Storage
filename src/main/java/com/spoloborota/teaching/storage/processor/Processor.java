@@ -7,7 +7,9 @@ import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
 import com.spoloborota.teaching.storage.processor.type.List;
+import com.spoloborota.teaching.storage.processor.type.Save;
 import com.spoloborota.teaching.storage.processor.type.Use;
+import com.spoloborota.teaching.storage.view.*;
 
 /**
  * process commands
@@ -16,9 +18,11 @@ import com.spoloborota.teaching.storage.processor.type.Use;
  */
 public class Processor {
 	public RAM ram;
+	public Console c;
 	
-	public Processor(RAM ram) {
+	public Processor(RAM ram, Console c) {
 		this.ram = ram;
+		this.c = c;
 	}
 	public String process(String commandString) {
 		String[] commandWords = commandString.trim().split("\\s+");
@@ -60,7 +64,7 @@ public class Processor {
 			case Commands.SAVE:
 				if (commandWords.length > 1) {
 					result = Save.process(ram);
-					System.out.println("Saving current storage...");
+//					System.out.println("Saving current storage...");
 				} else {
 					result = "null";
 				}
