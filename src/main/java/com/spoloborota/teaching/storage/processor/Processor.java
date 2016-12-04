@@ -59,9 +59,10 @@ public class Processor {
 				
 			case Commands.SAVE:
 				if (commandWords.length > 1) {
-					result = Create.process(ram, commandWords);
+					result = Save.process(ram);
+					System.out.println("Saving current storage...");
 				} else {
-					result = "Storage name does not specified";
+					result = "null";
 				}
 				break;
 				
