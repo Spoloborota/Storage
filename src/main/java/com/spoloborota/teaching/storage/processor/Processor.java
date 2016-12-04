@@ -75,7 +75,7 @@ public class Processor {
 					Save.process(ram);
 					System.out.println("Data saved. Good bye!");
 					System.exit(0);
-
+				
 				case "n":
 					System.out.println("Good bye!");
 					System.exit(0);
