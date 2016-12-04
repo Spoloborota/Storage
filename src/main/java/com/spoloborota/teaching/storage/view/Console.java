@@ -14,6 +14,7 @@ import com.spoloborota.teaching.storage.reader.SingletonReader;
 public class Console {
 	public Processor processor;
 	public SingletonReader rdr = SingletonReader.getInstance(); 
+	public String path = "";
 	
 	public Console(Processor processor) {
 		this.processor = processor;
@@ -23,6 +24,9 @@ public class Console {
 		while(true) {
 			try {
 				String commandString = rdr.readLine();
+				if(commandString.contains("//")){
+					path = commandString;
+				}
 				String result = processor.process(commandString);
 				System.out.println(result);
 			} catch (IOException e) {
