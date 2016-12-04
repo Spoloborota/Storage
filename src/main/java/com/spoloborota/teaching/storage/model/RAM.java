@@ -82,6 +82,7 @@ public class RAM {
 	public ArrayList<String> save() {
 		return currentStorage.save();
 	}
+	
 	public String getName() {
 		return currentStorage.name;
 	}
