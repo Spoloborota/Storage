@@ -90,4 +90,13 @@ public class RAM {
 		return currentStorage.print();
 		
 }
-}
+	public String Save() {
+		return currentStorage.save();
+		}
+		
+		
+		
+	}
+	
+	
+	
