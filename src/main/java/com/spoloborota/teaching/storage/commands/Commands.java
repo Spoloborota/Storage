@@ -5,7 +5,7 @@ public interface Commands {
 	public final static String CREATE = "create";
 	public final static String USE = "use";
 	public final static String SHUTDOWN = "shutdown";
-	
+
 	public final static String MAP = "map";
 	public final static String LIST = "list";
 	public final static String SET = "set";
@@ -13,5 +13,10 @@ public interface Commands {
 	
 	public final static String ADD = "add";
 	public final static String SELECT_ALL = "select all";
+	public final static String SAVE = "save";
+	public final static String Y = "y";
+	public final static String N = "n";
+	
+	public final static String EXIT = "exit";
 	
 }
