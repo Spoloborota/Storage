@@ -15,5 +15,16 @@ public class MapStorage {
 	public boolean add(String[] keyValue) {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
+	
 	}
+	
+	public HashMap<String, String> list() {
+		return hashMap;
+	}
+	
+	public boolean isEmpty() { 
+		return hashMap.isEmpty();
+		//return false; 
+	}
+
 }
