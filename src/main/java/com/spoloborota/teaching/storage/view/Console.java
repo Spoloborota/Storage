@@ -14,7 +14,7 @@ import com.spoloborota.teaching.storage.reader.SingletonReader;
 public class Console {
 	public Processor processor;
 	public SingletonReader rdr = SingletonReader.getInstance(); 
-	public String path = "";
+	public static String path = "";
 
 	public Console(Processor processor) {
 		this.processor = processor;
