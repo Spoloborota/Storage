@@ -3,6 +3,7 @@ package com.spoloborota.teaching.storage.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.spoloborota.teaching.storage.file_load.FileLoad;
 import com.spoloborota.teaching.storage.type.MapStorage;
 
 /**
@@ -36,6 +37,10 @@ public class RAM {
 		}
 
 	}
+	
+	public RAM(String catalog) {
+		FileLoad.load(catalog);
+	} 
 
 	/**
 	 * Create new storage

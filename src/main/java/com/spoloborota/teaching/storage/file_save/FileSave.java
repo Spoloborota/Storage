@@ -4,15 +4,15 @@ import java.io.File;
 
 public class FileSave {
 
-	private static int CATALOG_EXIST_1_NO_EXIST_0 = 0;
+	private static int catalog_exist_1_no_exist_0 = 0;
 	public static String path;
 
 	public static void setCATALOG_EXIST_NO_EXIST(int cATALOG_EXIST) {
-		CATALOG_EXIST_1_NO_EXIST_0 = cATALOG_EXIST;
+		catalog_exist_1_no_exist_0 = cATALOG_EXIST;
 	}
 
 	public static int getCATALOG_EXIST_NO_EXIST() {
-		return CATALOG_EXIST_1_NO_EXIST_0;
+		return catalog_exist_1_no_exist_0;
 	}
 
 	public static void show_console() {

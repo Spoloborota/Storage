@@ -16,55 +16,61 @@ public class FileLoad {
 
 	public static void load(String name) {
 
-		final String DIR_NAME = name;
+		try {
 
-		File dir = new File(DIR_NAME);
+			final String DIR_NAME = name;
 
-		String[] filenames = dir.list(new ExtensionFilter(EXTENSION));
+			File dir = new File(DIR_NAME);
 
-		if (filenames.length == 0) {
-			System.out.println("В каталоге не найдено " + EXTENSION + " для загрузки, создайте свой :) ");
-		} else {
-			System.out.println("Загружены файлы с расширением " + EXTENSION + ":");
+			String[] filenames = dir.list(new ExtensionFilter(EXTENSION));
 
-			for (String filename : filenames) {
+			if (filenames.length == 0) {
+				System.out.println("В каталоге не найдено " + EXTENSION + " для загрузки, создайте свой :) ");
+			} else {
+				System.out.println("Загружены файлы с расширением " + EXTENSION + ":");
 
-				String[] nameWords = filename.trim().split("\\.");
-				System.out.println(nameWords[0]);
+				for (String filename : filenames) {
 
-				System.out.println(filename);
+					String[] nameWords = filename.trim().split("\\.");
+					System.out.println(nameWords[0]);
 
-				try {
-					BufferedReader reader = new BufferedReader(new FileReader(DIR_NAME + "\\" + filename));
+					System.out.println(filename);
+
 					try {
-						List<String> lines = new ArrayList<String>();
-						int i = 0;
-						String c;
-						while ((c = reader.readLine()) != null) {
+						BufferedReader reader = new BufferedReader(new FileReader(DIR_NAME + "\\" + filename));
+						try {
+							List<String> lines = new ArrayList<String>();
+							int i = 0;
+							String c;
+							while ((c = reader.readLine()) != null) {
 
-							lines.add(c);
+								lines.add(c);
 
-							if (i == 1) {
-								Processor.loadFile(nameWords[0], lines);
-								lines.clear();
+								if (i == 1) {
+									Processor.loadFile(nameWords[0], lines);
+									lines.clear();
+								}
+								i++;
+								if (i == 2) {
+									i = 0;
+								}
 							}
-							i++;
-							if (i == 2) {
-								i = 0;
-							}
+						} finally {
+							reader.close();
 						}
-					} finally {
-						reader.close();
-					}
 
-				} catch (IOException ex) {
-					System.out.println(ex.getMessage());
+					} catch (IOException ex) {
+						System.out.println(ex.getMessage());
+
+					}
 
 				}
 
 			}
+		} catch (NullPointerException e) {
 
 		}
+
 	}
 
 	private static class ExtensionFilter implements FilenameFilter {
