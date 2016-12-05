@@ -16,6 +16,7 @@ public class Main {
 		Processor processor = new Processor(ram);
 		Console console = new Console(processor);
 		console.startListen();
+		
 	}
 
 }

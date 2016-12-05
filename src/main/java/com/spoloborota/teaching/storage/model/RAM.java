@@ -78,4 +78,19 @@ public class RAM {
 			return false;
 		}
 	}
+	
+	/**
+	 * Show data from storage
+	 * @return - "true" if Storage selected and Storage is not empty 
+	 */
+	
+	public String list() {
+		if ((currentStorage != null) && (currentStorage.isEmpty() != true)) {
+			return currentStorage.list().toString();  
+		} else { 
+			return "Storage not selected or Storage is empty"; 
+		}
+		  
+	}
+
 }

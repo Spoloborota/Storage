@@ -6,6 +6,8 @@ import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
 import com.spoloborota.teaching.storage.processor.type.Use;
+import com.spoloborota.teaching.storage.processor.type.List;
+
 
 /**
  * process commands
@@ -54,10 +56,16 @@ public class Processor {
 					result = "Data for storage does not specified correctly";
 				}
 				break;
+
+			case Commands.LIST:
+					result = List.process(ram);
+				break;
+			
 				
 			case Commands.SHUTDOWN:
 				System.out.println("Good bye!");
 				System.exit(0);
+				
 			}
 			return result;
 		} else {
