@@ -93,6 +93,11 @@ public class RAM {
 	public String Save() {
 		return currentStorage.save();
 		}
+	
+	
+	public String getName(){
+		return currentStorage.name;
+	}
 		
 		
 		
