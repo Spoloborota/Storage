@@ -5,6 +5,7 @@ import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
 import com.spoloborota.teaching.storage.processor.type.Create;
 import com.spoloborota.teaching.storage.processor.type.Display;
+import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Use;
 
 /**
@@ -27,6 +28,11 @@ public class Processor {
 			
 			String result = "";
 			switch (commandWords[0]) {
+			
+			case Commands.LIST:
+				result = List.process(ram);
+				break;
+			
 			case Commands.DISPLAY:
 				result = Display.process(ram);
 				break;

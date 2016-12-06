@@ -18,6 +18,12 @@ public class RAM {
 		map = new HashMap<>();
 	}
 	
+	public String List() {
+		
+		return currentStorage.toString();
+
+}
+	
 	/**
 	 * Show all storages
 	 * @return string with all storage names
