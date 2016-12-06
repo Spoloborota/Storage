@@ -16,4 +16,8 @@ public class MapStorage {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
 	}
+	
+	public String toString(){
+		return hashMap.toString();
+	}
 }
