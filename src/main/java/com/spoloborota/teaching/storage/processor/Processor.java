@@ -10,6 +10,7 @@ import com.spoloborota.teaching.storage.processor.type.List;
 import com.spoloborota.teaching.storage.processor.type.Save;
 import com.spoloborota.teaching.storage.processor.type.Use;
 import com.spoloborota.teaching.storage.view.*;
+import com.spoloborota.teaching.storage.processor.type.*;
 
 /**
  * process commands
@@ -25,6 +26,8 @@ public class Processor {
 		
 	}
 	public String process(String commandString) {
+		char a = 'y';
+		char b = 'n';
 		String[] commandWords = commandString.trim().split("\\s+");
 		if (commandWords.length != 0) {
 			for (String s : commandWords) {
@@ -79,8 +82,10 @@ public class Processor {
 				break;
 				
 			case Commands.SHUTDOWN:
-				System.out.println("Good bye!");
-				System.exit(0);
+				result = Shutdown.process(ram,a,b);
+				
+//				System.out.println("Good bye!");
+//				System.exit(0);
 			}
 			return result;
 		} else {
