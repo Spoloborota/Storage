@@ -9,6 +9,7 @@ import com.spoloborota.teaching.storage.view.Console;
 import com.spoloborota.teaching.storage.type.*;
 //import com.spoloborota.teaching.storage.view.*;
 
+
 public class Save {
 	
 		
@@ -22,9 +23,17 @@ public class Save {
 		
 		try(FileWriter writer = new FileWriter(c.path + "\\" + ram.getName() + ".storage" , false))
 	    {
-	       // запись всей строки
-	        writer.write(isSaved);
-	        writer.flush();
+			
+			String[] s = isSaved.split("\\, \\]");
+			for(int i = 0; i < s.length; i++){
+				writer.write(s[i]);
+				writer.flush();
+			}
+				
+	        
+				 
+				 
+				
 	    }
 	    catch(IOException ex){
 	         
