@@ -5,6 +5,9 @@ import java.io.IOException;
 
 import com.spoloborota.teaching.storage.processor.Processor;
 import com.spoloborota.teaching.storage.reader.SingletonReader;
+import com.spoloborota.teaching.storage.model.*;
+import com.spoloborota.teaching.storage.type.*;
+
 
 /**
  * Commands received via system console
@@ -19,17 +22,16 @@ public class Console {
 	public Console(Processor processor) {
 		this.processor = processor;
 	}
-	
-	
+
+
 
 	public void startListen() {
 		while(true) {
 			try {
-				
 				String commandString = rdr.readLine();
 				if(commandString.contains("\\")){
-					path = commandString + "\\save.txt";
-					System.out.println("Your path is " + path);
+					path = commandString + "\\";
+					System.out.println("Your path is " + path);	
 				}
 				else{
 					String result = processor.process(commandString);// вот тут если что уберешь
