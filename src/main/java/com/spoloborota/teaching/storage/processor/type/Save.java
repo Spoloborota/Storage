@@ -24,16 +24,26 @@ public class Save {
 		try(FileWriter writer = new FileWriter(c.path + "\\" + ram.getName() + ".storage" , false))
 	    {
 			
-			String[] s = isSaved.split("\\, \\]");
-			for(int i = 0; i < s.length; i++){
+			String[] s = isSaved.split("\\s+");
+			for(int i = 0; i < s.length; i++)
+			{
 				writer.write(s[i]);
+				writer.append("\n");
 				writer.flush();
 			}
+			
+			
+			
+			
+			
+//			String[] s = isSaved.split("\\s+");
+//			for(String o : s){
+//				 writer.write(o + "\n");
+//			}
+//			writer.close();
+//			
 				
 	        
-				 
-				 
-				
 	    }
 	    catch(IOException ex){
 	         
