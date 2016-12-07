@@ -15,4 +15,8 @@ public interface Commands {
 	public final static String ADD = "add";
 	public final static String SELECT_ALL = "select all";
 	
+	public final static char y = 'y';
+	public final static char n = 'n';
+	
+	
 }
