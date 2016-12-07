@@ -1,6 +1,8 @@
 package com.spoloborota.teaching.storage.processor;
 
 
+import java.io.IOException;
+
 import com.spoloborota.teaching.storage.commands.Commands;
 import com.spoloborota.teaching.storage.model.RAM;
 import com.spoloborota.teaching.storage.processor.type.Add;
@@ -25,9 +27,10 @@ public class Processor {
 		this.ram = ram;
 		
 	}
-	public String process(String commandString) {
-		char a = 'y';
-		char b = 'n';
+	public String process(String commandString) throws IOException {
+//		char[] chars = {'y','n'};
+//		char a = 'y';
+//		char b = 'n';
 		String[] commandWords = commandString.trim().split("\\s+");
 		if (commandWords.length != 0) {
 			for (String s : commandWords) {
@@ -82,10 +85,8 @@ public class Processor {
 				break;
 				
 			case Commands.SHUTDOWN:
-				result = Shutdown.process(ram,a,b);
+				result = Shutdown.process(ram);
 				
-//				System.out.println("Good bye!");
-//				System.exit(0);
 			}
 			return result;
 		} else {
