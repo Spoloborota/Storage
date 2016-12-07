@@ -86,7 +86,6 @@ public class Processor {
 				
 			case Commands.SHUTDOWN:
 				result = Shutdown.process(ram);
-				
 			}
 			return result;
 		} else {
