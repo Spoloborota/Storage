@@ -1,6 +1,6 @@
 package com.spoloborota.teaching.storage.type;
 
-import java.util.HashMap;
+import java.util.HashMap;;
 
 public class MapStorage {
 
@@ -16,4 +16,10 @@ public class MapStorage {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
 	}
+	
+	
+	
+	
+	
+	
 }

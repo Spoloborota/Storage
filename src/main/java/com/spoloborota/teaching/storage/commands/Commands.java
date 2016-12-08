@@ -11,7 +11,11 @@ public interface Commands {
 	public final static String SET = "set";
 	public final static String QUEUE = "queue";
 	
+	public final static String Y = "y";
+	public final static String N = "n";
+	public final static String SAVE = "save";
 	public final static String ADD = "add";
 	public final static String SELECT_ALL = "select all";
+	
 	
 }
