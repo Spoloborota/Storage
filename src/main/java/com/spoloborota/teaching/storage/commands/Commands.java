@@ -16,6 +16,6 @@ public interface Commands {
 	public final static String SAVE = "save";
 	public final static String ADD = "add";
 	public final static String SELECT_ALL = "select all";
-	//zagid
+	
 	
 }

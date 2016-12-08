@@ -24,18 +24,14 @@ public class RAM {
 	public Map<String, MapStorage> map;
 	public MapStorage currentStorage = null;
 	public String source;
-	
-	
-	
-	public RAM() {
+
+
+
+	public RAM(String source) {
 		map = new HashMap<>();
-		LoadStorage ld;
+		this.source = source;
+
 	}
-	
-	
-	
-	
-	
 
 	/**
 	 * Show all storages
@@ -44,7 +40,7 @@ public class RAM {
 	public String display() {
 		return map.keySet().toString();
 	}
-	
+
 	/**
 	 * Create new storage
 	 * @param name - name of the creating storage
@@ -58,7 +54,7 @@ public class RAM {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Delete existing storage by name
 	 * @param name
@@ -69,7 +65,7 @@ public class RAM {
 			currentStorage = null;
 		}
 	}
-	
+
 	/**
 	 * Select existing storage by name to operate with it
 	 * @param name
@@ -84,7 +80,7 @@ public class RAM {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Add data to storage
 	 * @param data
@@ -92,12 +88,12 @@ public class RAM {
 	 */
 	public boolean add(String[] data) {
 		if (currentStorage != null) {
-            return currentStorage.add(data);
+			return currentStorage.add(data);
 		} else {
 			return false;
 		}
 	}
-	
+
 	public String list() {
 		if (currentStorage != null) {
 			return currentStorage.hashMap.entrySet().toString();
@@ -105,25 +101,26 @@ public class RAM {
 			return "Please select the Storage";
 		}
 	}
-	
+
 	public boolean save() throws IOException {
 		if (currentStorage != null) {
-			
+
 			File f = new File(source, currentStorage.name + ".storage");
-	        PrintWriter out = new PrintWriter(f);
-					
+			PrintWriter out = new PrintWriter(f);
+
 			for (Entry <String, String> entry: currentStorage.hashMap.entrySet()) { 
 				String key = entry.getKey(); 
 				String value = entry.getValue(); 
 				out.println(key);
 				out.println(value);
-				
-				}
+
+			}
 			out.close();
-			
+
 			return true;			
-			
+
 		}
+
 		return false;
 	}
 }
