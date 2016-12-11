@@ -1,6 +1,7 @@
 package com.spoloborota.teaching.storage.view;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 
 import com.spoloborota.teaching.storage.processor.Processor;
@@ -31,7 +32,12 @@ public class Console {
 				String commandString = rdr.readLine();
 				if(commandString.contains("\\")){
 					path = commandString + "\\";
-					System.out.println("Your path is " + path);	
+//					System.out.println("Your path is " + path);	
+					File f = new File(path);
+					if(f.isDirectory()){
+						System.out.println("Now your directory is" + path);
+					}
+					
 				}
 				else{
 					String result = processor.process(commandString);// вот тут если что уберешь
