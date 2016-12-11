@@ -90,7 +90,7 @@ public class RAM {
 		return currentStorage.print();
 		
 }
-	public String Save() {
+	public ArrayList<String> Save() {
 		return currentStorage.save();
 		}
 	
