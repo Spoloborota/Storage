@@ -54,10 +54,11 @@ public class Console {
 						String u = "use " + proverka(path)[i];
 						r = processor.process(u);
 						for(int j = 0; j < readfile(path+"\\"+proverka(path)[i]+ ".storage").size();j++){
-							String d = "add" + readfile(path+"\\"+proverka(path)[i]+".storage").get(j) + " " + readfile(path + "\\" + proverka(path)[i]+" .storage").get(j+1);
+							String d = "add " + readfile(path+"\\"+proverka(path)[i]+".storage").get(j) + " " + readfile(path + "\\" + proverka(path)[i]+".storage").get(j+1);
 							j++;
-							System.out.println("Your data downloaded!");
+							r = processor.process(d);
 						}
+						System.out.println("Your data downloaded!");
 					}
 
 				}
@@ -74,9 +75,9 @@ public class Console {
 		return path;
 	}
 
-	private List<String> readfile(String path) throws IOException{
-		List<String> l1 = Files.readAllLines(Paths.get(path), StandardCharsets.UTF_8);
-		return l1;
+	private List<String> readfile(String pp) throws IOException{
+		List<String> lines = Files.readAllLines(Paths.get(pp), StandardCharsets.UTF_8);
+		return lines;
 
 	}
 
