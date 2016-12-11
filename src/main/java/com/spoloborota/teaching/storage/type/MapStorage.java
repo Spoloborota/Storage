@@ -32,7 +32,7 @@ public class MapStorage {
 		}
 		return arr;
 	}
-	public String save() {
+	public ArrayList<String> save() {
 //		String a = "";
 //		String b = "";
 		ArrayList<String> arr = new ArrayList<String>();
@@ -42,7 +42,7 @@ public class MapStorage {
 		 arr.add(key);
 		 arr.add(value);
 		}
-		return arr.toString();
+		return arr;
 	}
 	
 	
