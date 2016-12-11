@@ -1,6 +1,8 @@
 package com.spoloborota.teaching.storage.type;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapStorage {
 
@@ -16,4 +18,32 @@ public class MapStorage {
 		hashMap.put(keyValue[0], keyValue[1]);
 		return true;
 	}
+	
+	
+
+	public ArrayList<String> print() {
+		String a = "";
+		ArrayList<String> arr = new ArrayList<String>();
+		for (Map.Entry<String, String> pair : hashMap.entrySet()){
+		 String key = pair.getKey();
+		 String value = pair.getValue();
+		 a = key + " " + value;
+		 arr.add(0, a);
+		}
+		return arr;
+	}
+	public ArrayList<String> save() {
+//		String a = "";
+//		String b = "";
+		ArrayList<String> arr = new ArrayList<String>();
+		for (Map.Entry<String, String> pair : hashMap.entrySet()){
+		 String key = pair.getKey();
+		 String value = pair.getValue();
+		 arr.add(key);
+		 arr.add(value);
+		}
+		return arr;
+	}
+	
+	
 }
